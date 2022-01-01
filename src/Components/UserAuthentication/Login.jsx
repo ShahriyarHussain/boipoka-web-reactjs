@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Assets/boipoka_logo.svg";
 // import CheckLogin from "../../Hooks/CheckLogin";
 import { UserContext } from "../../Hooks/UserContext";
 function Login() {
   const url = process.env.REACT_APP_BASE_URL;
-
   const [loginUsername, setLoginUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("Development Preview");
