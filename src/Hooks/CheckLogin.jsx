@@ -30,7 +30,6 @@ function CheckLogin() {
               setloggedIn(true);
               return response.json();
             } else {
-              console.log("chk");
               setloggedIn(false);
               navigate("/login");
               return response.statusText;
@@ -39,15 +38,12 @@ function CheckLogin() {
           .then((json) => {
             setUserId(json.id);
             setUsername(json.username);
-            console.log("chklog", json.id, json.username);
           });
       } else {
         navigate("/login");
       }
     }
-    return () => {
-      console.log("user has logged in");
-    };
+    return () => {};
   }, []);
 }
 

@@ -33,7 +33,6 @@ function DeletePost() {
           setIsPending(false);
         } else {
           setIsPending(false);
-          console.log(err.toString());
         }
       });
   };

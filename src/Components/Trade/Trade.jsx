@@ -16,13 +16,10 @@ class Community extends Component {
         listings: listing,
         status: true,
       });
-      console.log(listing);
-      console.log("fetch success");
     } catch (e) {
       this.setState({
         status: false,
       });
-      console.log(e);
     }
   }
 

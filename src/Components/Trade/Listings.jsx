@@ -27,12 +27,8 @@ const Listings = () => {
       .then((json) => {
         setListings(json);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, []);
-
-  console.log(listings);
 
   return (
     <div className='p-2 ml-20'>

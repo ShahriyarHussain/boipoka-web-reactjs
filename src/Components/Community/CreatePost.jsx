@@ -6,7 +6,6 @@ import Loader from "../Loaders/Loaders";
 
 function CreatePost() {
   const { loggedIn } = useContext(UserContext);
-  console.log(loggedIn);
   CheckLogin();
 
   const url = process.env.REACT_APP_API_URL + "posts/";
@@ -54,7 +53,6 @@ function CreatePost() {
         return response.json();
       })
       .then((json) => {
-        console.log(json.id);
         setIsPending(false);
         navigate(`/posts/${json.id}/`);
       })
@@ -65,7 +63,6 @@ function CreatePost() {
         } else {
           setIsPending(false);
           setMessage("");
-          console.log(err.toString());
         }
       });
   };

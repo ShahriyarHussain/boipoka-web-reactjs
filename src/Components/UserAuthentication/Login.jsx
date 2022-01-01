@@ -16,7 +16,6 @@ function Login() {
 
     setMessage("Logging in");
     const loginData = { username: loginUsername, password };
-    console.log(loginData);
     fetch(url + "token-auth/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -35,7 +34,7 @@ function Login() {
           return "";
         } else {
           localStorage.setItem("token", json.token);
-          console.log(json);
+
           setloggedIn(true);
           setUserId(json.user.id);
           setUsername(json.user.username);
@@ -44,8 +43,8 @@ function Login() {
         }
       })
       .catch((error) => {
-        if (error === "NetworkError") console.log(error);
-        setMessage("Network Error Occured, check internet connection");
+        if (error === "NetworkError")
+          setMessage("Network Error Occured, check internet connection");
       });
   };
 

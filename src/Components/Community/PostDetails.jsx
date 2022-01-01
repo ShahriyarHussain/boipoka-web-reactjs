@@ -18,11 +18,8 @@ const PostDetails = () => {
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
 
-  // console.log("update", id);
-
   useEffect(() => {
     setIsPending(true);
-    console.log("I am above here");
     const abortController = new AbortController();
 
     fetch(
@@ -35,29 +32,23 @@ const PostDetails = () => {
       { signal: abortController.signal }
     )
       .then((response) => {
-        console.log(response);
-        console.log("success1");
         if (!response.ok) {
           throw Error("Unable to fetch post from the resource");
         }
         return response.json();
       })
       .then((json) => {
-        console.log("success2");
         setIsPending(false);
         setPostDetails(json);
         setError(null);
       })
       .catch((err) => {
         if (err.name === "AbortError") {
-          console.log("Fetch operation ignored");
         } else if (err.name === "TypeError") {
           setIsPending(false);
           setError("Unable to connect to server");
         } else {
-          // setError(err.message);
           setIsPending(false);
-          console.log("The error:", err);
           setError("Unexpected error occured");
         }
       });

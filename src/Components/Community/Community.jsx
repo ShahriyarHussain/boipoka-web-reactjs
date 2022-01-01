@@ -29,8 +29,6 @@ const Community = () => {
       { signal: abortController.signal }
     )
       .then((response) => {
-        console.log(response);
-        console.log("success1");
         if (!response.ok) {
           setError("Unable to fetch post from the resource");
           navigate("/login");
@@ -45,7 +43,6 @@ const Community = () => {
       })
       .catch((err) => {
         if (err.name === "AbortError") {
-          console.log("Fetch operation ignored");
         } else if (err.name === "TypeError") {
           setIsPending(false);
           setError("Unable to connect to server");

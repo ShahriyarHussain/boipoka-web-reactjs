@@ -32,7 +32,6 @@ function UpdatePost() {
 
   useEffect(() => {
     setIsPending(true);
-    console.log("I am above here");
     const abortController = new AbortController();
 
     fetch(
@@ -60,13 +59,11 @@ function UpdatePost() {
       })
       .catch((err) => {
         if (err.name === "AbortError") {
-          console.log("Fetch operation ignored");
         } else if (err.name === "TypeError") {
           setIsPending(false);
           setError("Unable to connect to server");
         } else {
           setIsPending(false);
-          console.log("The error:", err);
           setError("Unexpected error occured");
         }
       });
@@ -100,7 +97,6 @@ function UpdatePost() {
         return response.json();
       })
       .then((json) => {
-        console.log(json.id);
         setIsPending(false);
         navigate(`/posts/${json.id}/`);
       })
@@ -111,7 +107,6 @@ function UpdatePost() {
         } else {
           setIsPending(false);
           setMessage("");
-          console.log(err.toString());
         }
       });
   };

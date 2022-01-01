@@ -43,17 +43,12 @@ function AddListing() {
       { signal: abortController.signal }
     )
       .then((response) => {
-        console.log("response books", response);
         return response.json();
       })
       .then((json) => {
-        console.log("books!", json);
-        console.log(json[0].title);
         setBooks(json);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, [url]);
 
   useEffect(() => {
@@ -68,17 +63,12 @@ function AddListing() {
       { signal: abortController.signal }
     )
       .then((response) => {
-        console.log("response authors", response);
         return response.json();
       })
       .then((json) => {
-        console.log("authors!", json);
-        console.log(json[0].name);
         setAuthors(json);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, [url]);
 
   const bookDetailsHandler = (e) => {
