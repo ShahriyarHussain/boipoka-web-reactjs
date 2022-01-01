@@ -1,4 +1,4 @@
-# Boippoka (frontend)
+# Boipoka (frontend)
 
 This project contains the source code for Boipoka React app. The project is still under development and proper documentation will be available soon
 
