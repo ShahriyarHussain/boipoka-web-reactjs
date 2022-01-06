@@ -41,8 +41,8 @@ function UpdatePost() {
         headers: {
           Authorization: `JWT ${localStorage.getItem("token")}`,
         },
-      },
-      { signal: abortController.signal }
+        signal: abortController.signal 
+      },      
     )
       .then((response) => {
         if (!response.ok) {

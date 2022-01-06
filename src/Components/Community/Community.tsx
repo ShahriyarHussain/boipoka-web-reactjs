@@ -25,8 +25,8 @@ const Community = () => {
         headers: {
           Authorization: `JWT ${localStorage.getItem("token")}`,
         },
-      },
-      { signal: abortController.signal }
+        signal: abortController.signal
+      },      
     )
       .then((response) => {
         console.log(response);
