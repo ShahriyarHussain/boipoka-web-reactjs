@@ -17,7 +17,7 @@ const Postcard = ({ id, author, type, date, content, likes, comments }) => {
             on {date.split("T")[0]} at {date.split("T")[1].split(".")[0]}
           </span>
         </div>
-        <hr width='full' />
+        <hr className="w-full" />
         <Link to={`/posts/${id}`}>
           <div className='bg-gray-500 rounded-xl mt-4'>
             <article className='font-medium p-4'>{content}</article>

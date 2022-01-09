@@ -33,15 +33,12 @@ function AddListing() {
 
   useEffect(() => {
     const abortController = new AbortController();
-    fetch(
-      url + "books/",
-      {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem("token")}`,
-        },
+    fetch(url + "books/", {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("token")}`,
       },
-      { signal: abortController.signal }
-    )
+      signal: abortController.signal,
+    })
       .then((response) => {
         console.log("response books", response);
         return response.json();
@@ -58,15 +55,13 @@ function AddListing() {
 
   useEffect(() => {
     const abortController = new AbortController();
-    fetch(
-      url + "authors/",
-      {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem("token")}`,
-        },
+
+    fetch(url + "authors/", {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("token")}`,
       },
-      { signal: abortController.signal }
-    )
+      signal: abortController.signal,
+    })
       .then((response) => {
         console.log("response authors", response);
         return response.json();
@@ -151,7 +146,6 @@ function AddListing() {
           <select
             className='rounded-md border-2 border-gray-200 drop-shadow-sm h-8 m-3 text-lg'
             required
-            type='text'
             name='author'
             value={bookDetails.author}
             onChange={bookDetailsHandler}>
@@ -165,7 +159,6 @@ function AddListing() {
           <textarea
             className='rounded-md border-2 border-gray-200 drop-shadow-sm h-8 m-3 text-lg'
             required
-            type='text'
             name='description'
             value={bookDetails.description}
             onChange={bookDetailsHandler}
