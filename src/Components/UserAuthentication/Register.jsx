@@ -27,7 +27,7 @@ function Register() {
   }
 
   const validate = (value) => {
-    if (3 < value.length && value.length < 20) {
+    if (2 < value.length && value.length < 20) {
       return true;
     } else {
       return false;
