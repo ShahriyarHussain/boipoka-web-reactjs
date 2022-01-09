@@ -35,15 +35,12 @@ function UpdatePost() {
     console.log("I am above here");
     const abortController = new AbortController();
 
-    fetch(
-      url + id + "/",
-      {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem("token")}`,
-        },
-        signal: abortController.signal 
-      },      
-    )
+    fetch(url + id + "/", {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("token")}`,
+      },
+      signal: abortController.signal,
+    })
       .then((response) => {
         if (!response.ok) {
           throw Error("Unable to fetch post from the resource");

@@ -102,6 +102,14 @@ function Login() {
           </p>
         </div>
 
+        <div className='my-3 text-sm'>
+          <a
+            className='text-yellow-500 ml-2'
+            href='https://github.com/ShahriyarHussain/boipoka_mobile/releases/tag/Unreleased'>
+            Download the mobile app
+          </a>
+        </div>
+
         <p className='text-red-600 m-2 font-bold text-xl'>{message}</p>
       </div>
     </div>

@@ -16,6 +16,14 @@ const NotFound = () => {
           Oops! 404 Not Found!
         </h1>
       </div>
+
+      <div className='my-3 text-sm'>
+        <a
+          className='text-yellow-500 ml-2'
+          href='https://github.com/ShahriyarHussain/boipoka_mobile/releases/tag/Unreleased'>
+          Download the mobile app
+        </a>
+      </div>
     </div>
   );
 };

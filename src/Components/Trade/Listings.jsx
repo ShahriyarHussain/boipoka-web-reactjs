@@ -1,6 +1,6 @@
 import CheckLogin from "../../Hooks/CheckLogin";
 import { Link } from "react-router-dom";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ListingCard from "./ListingCard";
 
 const Listings = () => {
@@ -12,15 +12,12 @@ const Listings = () => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    fetch(
-      url,
-      {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem("token")}`,
-        },
-        signal: abortController.signal
-      },      
-    )
+    fetch(url, {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("token")}`,
+      },
+      signal: abortController.signal,
+    })
       .then((response) => {
         return response.json();
       })
