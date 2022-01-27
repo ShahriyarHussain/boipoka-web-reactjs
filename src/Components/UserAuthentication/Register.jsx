@@ -2,6 +2,8 @@ import Axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../../Assets/boipoka_logo.svg";
+import Loader from "../Loaders/Loaders";
+import ErrorMessage from "../Loaders/ErrorMessage";
 
 function Register() {
   const url = process.env.REACT_APP_BASE_URL;
@@ -14,6 +16,7 @@ function Register() {
   });
   const [pass, setpass] = useState("");
   const [message, setmessage] = useState("Development preview");
+  const [isPending, setPending] = useState(false);
 
   let navigate = useNavigate();
 
@@ -49,6 +52,7 @@ function Register() {
       return false;
     }
 
+    setPending(true);
     const { firstName, lastName, username, password } = userData;
     Axios.post(url + "users/users/create", {
       user: {
@@ -59,6 +63,7 @@ function Register() {
       },
     }).then((response) => {
       if (response.status === 200) {
+        setPending(false);
         navigate("/login");
       } else {
         setmessage("Error! Code: " + response.status);
@@ -175,7 +180,11 @@ function Register() {
           </a>
         </div>
 
-        <p className='text-red-600 mt-3 font-bold text-xl'>{message}</p>
+        {isPending ? (
+          <Loader message={"Registering In"} />
+        ) : (
+          <ErrorMessage message={message} />
+        )}
       </div>
     </div>
   );

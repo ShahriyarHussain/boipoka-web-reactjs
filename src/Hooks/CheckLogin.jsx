@@ -7,14 +7,7 @@ function CheckLogin() {
   const { loggedIn, setloggedIn, setUserId, setUsername } =
     useContext(UserContext);
 
-  let navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (!loggedIn) {
-  //     navigate("/login");
-  //   }
-  //   return () => {};
-  // }, []);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!loggedIn) {
@@ -48,7 +41,7 @@ function CheckLogin() {
     return () => {
       console.log("user has logged in");
     };
-  }, []);
+  }, [url, navigate, setUserId, setUsername, setloggedIn, loggedIn]);
 }
 
 export default CheckLogin;

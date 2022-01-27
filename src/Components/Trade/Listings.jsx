@@ -27,7 +27,7 @@ const Listings = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [url]);
 
   console.log(listings);
 

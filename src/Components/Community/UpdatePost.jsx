@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CheckLogin from "../../Hooks/CheckLogin";
 import { UserContext } from "../../Hooks/UserContext";
+import ErrorMessage from "../Loaders/ErrorMessage";
 import Loader from "../Loaders/Loaders";
 
 function UpdatePost() {
@@ -28,7 +29,7 @@ function UpdatePost() {
     });
   };
 
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsPending(true);
@@ -53,18 +54,18 @@ function UpdatePost() {
           content: json.content,
           post_type: json.post_type,
         });
-        setError(null);
+        setMessage("");
       })
       .catch((err) => {
         if (err.name === "AbortError") {
           console.log("Fetch operation ignored");
         } else if (err.name === "TypeError") {
           setIsPending(false);
-          setError("Unable to connect to server");
+          setMessage("Unable to connect to server");
         } else {
           setIsPending(false);
           console.log("The error:", err);
-          setError("Unexpected error occured");
+          setMessage("Unexpected error occured");
         }
       });
     return () => {
@@ -118,7 +119,11 @@ function UpdatePost() {
       <h1 className='text-6xl mx-3 mb-6 font-bold text-darkblue'>
         Update Your Post
       </h1>
-      {isPending ? <Loader /> : ""}
+      {isPending ? (
+        <Loader message={"Updating"} />
+      ) : (
+        <ErrorMessage message={message} />
+      )}
       <div className='text-red-600 font-bold'>{message}</div>
       <div className='bg-darkblue rounded-2xl h-auto max-w-2xl '>
         <div className='p-3 text-purewhite'>

@@ -3,18 +3,22 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Assets/boipoka_logo.svg";
 // import CheckLogin from "../../Hooks/CheckLogin";
 import { UserContext } from "../../Hooks/UserContext";
+import ErrorMessage from "../Loaders/ErrorMessage";
+import Loader from "../Loaders/Loaders";
 function Login() {
   const url = process.env.REACT_APP_BASE_URL;
   const [loginUsername, setLoginUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("Development Preview");
   const { setloggedIn, setUserId, setUsername } = useContext(UserContext);
+  const [isPending, setPending] = useState(false);
   const navigate = useNavigate();
 
   const loginHandler = (e) => {
     e.preventDefault();
 
-    setMessage("Logging in");
+    // setMessage("Logging in");
+    setPending(true);
     const loginData = { username: loginUsername, password };
     console.log(loginData);
     fetch(url + "token-auth/", {
@@ -32,6 +36,7 @@ function Login() {
       .then((json) => {
         if (json === "Bad Request") {
           setMessage("Invalid Credentials");
+          setPending("False");
           return "";
         } else {
           localStorage.setItem("token", json.token);
@@ -40,12 +45,14 @@ function Login() {
           setUserId(json.user.id);
           setUsername(json.user.username);
           setMessage("Login Success");
+          setPending(false);
           navigate("/");
         }
       })
       .catch((error) => {
         if (error === "NetworkError") console.log(error);
         setMessage("Network Error Occured, check internet connection");
+        setPending(false);
       });
   };
 
@@ -109,8 +116,11 @@ function Login() {
             Download the mobile app
           </a>
         </div>
-
-        <p className='text-red-600 m-2 font-bold text-xl'>{message}</p>
+        {isPending ? (
+          <Loader message={"Logging In"} />
+        ) : (
+          <ErrorMessage message={message} />
+        )}
       </div>
     </div>
   );

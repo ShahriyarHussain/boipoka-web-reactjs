@@ -1,7 +1,7 @@
-const Loader = (type) => {
+const Loader = (props) => {
   return (
     <div className='animate-pulse text-2xl font-bold text-darkblue p-1 ml-4'>
-      Loading...
+      {props.message && true ? props.message : "Loading..."}
     </div>
   );
 };

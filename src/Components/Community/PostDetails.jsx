@@ -25,15 +25,12 @@ const PostDetails = () => {
     console.log("I am above here");
     const abortController = new AbortController();
 
-    fetch(
-      url + id + "/",
-      {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem("token")}`,
-        },
-        signal: abortController.signal
-      },      
-    )
+    fetch(url + id + "/", {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("token")}`,
+      },
+      signal: abortController.signal,
+    })
       .then((response) => {
         console.log(response);
         console.log("success1");
@@ -64,7 +61,7 @@ const PostDetails = () => {
     return () => {
       abortController.abort();
     };
-  }, [url]);
+  }, [url, id]);
 
   return (
     <div className='h-auto w-auto ml-20'>

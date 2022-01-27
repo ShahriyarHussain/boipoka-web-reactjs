@@ -13,21 +13,18 @@ const Community = () => {
   const [isPending, setIsPending] = useState(false);
   const [posts, setPosts] = useState("");
   const [error, setError] = useState(null);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   // const { userId } = useContext(UserContext);
 
   useEffect(() => {
     setIsPending(true);
     const abortController = new AbortController();
-    fetch(
-      url,
-      {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem("token")}`,
-        },
-        signal: abortController.signal
-      },      
-    )
+    fetch(url, {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("token")}`,
+      },
+      signal: abortController.signal,
+    })
       .then((response) => {
         console.log(response);
         console.log("success1");
@@ -59,7 +56,7 @@ const Community = () => {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, [navigate, url]);
 
   return (
     <div className='ml-20 mt-4 h-auto w-auto'>
