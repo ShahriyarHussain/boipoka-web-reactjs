@@ -1,6 +1,6 @@
 # Boipoka (frontend)
 
-This project contains the source code for Boipoka React app. The project is still under development and proper documentation will be available soon
+Thank you for dropping by. This project contains the source code for Boipoka React app. The project is still under development and proper documentation will be available soon. Currently it's not open to contribution due the way project is organized.
 
 ## Getting Started with Create React App
 
