@@ -61,7 +61,7 @@ const Community = () => {
   return (
     <div className='ml-20 mt-4 h-auto w-auto'>
       <div className='mt-5 ml-1'>
-        <h1 className='font-bold text-4xl p-2 '>Booklover's Community</h1>
+        <h1 className='font-bold text-4xl p-2 '>Boipoka Community</h1>
         {isPending ? <Loader /> : ""}
         {error && (
           <div className='text-red-600 font-bold text-3xl ml-3'> {error} </div>
