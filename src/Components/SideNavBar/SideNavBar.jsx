@@ -91,8 +91,9 @@ const SideNavBar = () => {
         <Link
           onClick={() => {
             localStorage.removeItem("token");
+            window.location.reload();
           }}
-          to='/login'>
+          to=''>
           <SideNavBarIcon
             isSelected={false}
             icon={<RiLogoutBoxRLine size='48' />}
